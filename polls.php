@@ -1,5 +1,11 @@
 <?php
 session_start(); 
+if(!isset($_SESSION["admin"]))
+{
+
+
+header("Refresh:0;url=admin_login.php");
+}
 require ('includes\database.php');
 include('header.php');
 $today = $today = date("Y-m-d");
