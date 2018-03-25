@@ -4,11 +4,12 @@ error_reporting(1);
 
 require('settings.php');
 require('class_upload.php');
-
-$request_parts = explode('/', $_SERVER['REQUEST_URI']); 
+$request_parts = explode('/', $_SERVER['REQUEST_URI']);
+ 
 in_array($request_parts[2],['fileUpload','thumbsdir','thumbsdb'])?$route = $request_parts[2]:'';
 
-$db = new mysqli("localhost", 'root','root','memes');
+
+$db = new mysqli("localhost", $settings['username'], $settings['password'], $settings['dbname']);
 // If we have an error connecting to the db, then exit page
 if ($db->connect_errno) {
     print_response(['success'=>false,"error"=>"Connect failed: ".$db->connect_error]);
@@ -87,7 +88,6 @@ function getThumbsdb(){
 
 
 function doUpload($settings,$files,$path){
-    //echo 'surprise';
     $uploader = new Upload($settings,$files,$path);
     return $uploader->doUploads();
 }

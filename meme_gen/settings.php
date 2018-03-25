@@ -1,5 +1,5 @@
 <?php
 $settings = ['username'=>'memes',
-	     'password' => 'oyuRFsYCfCfJAeoV',
+	     'password' => 'memes',
 	     'dbname' => 'memes'
 ];
